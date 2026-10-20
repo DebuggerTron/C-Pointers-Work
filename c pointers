@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+void OriginalScorePrinting(int score) {
+    printf("original score value: %d\n", score);
+    printf("original score memory: %p\n", score);
+}
+
+void* pointerPrinting(int ptr) {
+    printf("\nptr adress: %p\n", ptr);
+    printf("ptr value: %d\n", ptr);
+}
+
+void scorePrinting(int score) {
+    printf("\nscore value: %d\n", score);
+    printf("score memory: %p\n\n", score);
+}
+
+void AnsweringPointerQuestions(int counter) {
+    for(int i = 0; i < 41; i++) {
+        printf("-");
+    }
+    printf("\nPOINTER QUESTIONS\n");
+    printf("%d: a pointer is a variable that stores a memory adress of another variable.\n", counter++);
+    printf("%d: it is the symbol that tells it to store the adress of said variable.\n", counter++);
+    printf("%d: we have a pointer variable called \"ptr\".\n", counter++);
+    printf("%d: they have the same adress because we are literally storing the adress of score in the variable ptr.\n", counter++);
+    printf("%d: already talked about in the comment above, but it is decompiling what the value of the adress in ptr and assigning it a different value.\n", counter++);
+}
+
+int main()
+{
+    int score = 80;
+    int *ptr = &score;
+    int counter = 1;
+
+    OriginalScorePrinting(score);
+
+    // decompiles the value of the adress stored in ptr and changes that value to 95
+    *ptr = 95;
+    
+    pointerPrinting(*ptr);
+    scorePrinting(score);
+
+    AnsweringPointerQuestions(counter);
+
+    for(int i = 0; i < 41; i++) {
+        printf("-");
+    }
+
+    // bonus task
+    int num1 = 10;
+    int num2 = 20;
+    int *num1pointer = &num1;
+    int *num2pointer = &num2;
+
+    printf("\n\noriginal num1 value: %d\n", num1);
+    printf("original num1 value: %d\n", num2);
+
+    *num1pointer = 20;
+    *num2pointer = 10;
+
+    printf("\nnew num1 value: %d\n", num1);
+    printf("new num2 value: %d", num2);
+}
